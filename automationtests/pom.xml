@@ -205,7 +205,7 @@
 		 <dependency>
             <groupId>com.slack.api</groupId>
             <artifactId>slack-api-client</artifactId>
-            <version>1.6.1-RC1</version>
+            <version>1.46.0</version>
         </dependency>
 
 		<!-- for translation -->
@@ -649,11 +649,9 @@
                 <finalName>${fileName}</finalName>
                 <transformers>
                     <!-- need this to merge the services files properly -->
-                    <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                     <!-- add Main-Class to manifest file -->
-                    <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                         <mainClass>io.mosip.testrig.apirig.testrunner.MosipTestRunner</mainClass>
                     </transformer>
                 </transformers>
