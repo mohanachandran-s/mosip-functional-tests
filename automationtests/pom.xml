@@ -126,7 +126,7 @@
 		<google.zxing.version>3.3.3</google.zxing.version>
 		<hadoop-client>2.8.1</hadoop-client>
 		<htrace-core4>4.1.0-incubating</htrace-core4>
-		<aws.javasdk.version>1.11.368</aws.javasdk.version>
+		<aws.javasdk.version>1.12.794</aws.javasdk.version>
 		<s3mock.version>0.2.4</s3mock.version>
 		<ignite.version>2.3.0</ignite.version>
 		<findbugs.version>3.0.1</findbugs.version>
@@ -649,11 +649,9 @@
                 <finalName>${fileName}</finalName>
                 <transformers>
                     <!-- need this to merge the services files properly -->
-                    <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                     <!-- add Main-Class to manifest file -->
-                    <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                         <mainClass>io.mosip.testrig.apirig.testrunner.MosipTestRunner</mainClass>
                     </transformer>
                 </transformers>
