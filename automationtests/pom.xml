@@ -78,7 +78,7 @@
 		<!-- data -->
 		<h2.version>1.4.197</h2.version>
 		<mysql.connector.version>5.1.46</mysql.connector.version>
-		<postgresql.version>42.2.2</postgresql.version>
+		<postgresql.version>42.7.8</postgresql.version>
 		<eclipselink.version>2.5.0</eclipselink.version>
 		<hibernate.validator.version>6.0.12.Final</hibernate.validator.version>
 
@@ -649,11 +649,9 @@
                 <finalName>${fileName}</finalName>
                 <transformers>
                     <!-- need this to merge the services files properly -->
-                    <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                     <!-- add Main-Class to manifest file -->
-                    <transformer
-                            implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                    <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                         <mainClass>io.mosip.testrig.apirig.testrunner.MosipTestRunner</mainClass>
                     </transformer>
                 </transformers>
