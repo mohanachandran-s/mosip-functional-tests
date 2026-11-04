@@ -87,6 +87,10 @@ additionalResources:
   ## Specify any JAVA_OPTS string here. These typically will be specified in conjunction with above resources
   ## Example: java_opts: "-Xms500M -Xmx500M"
   javaOpts: "-Xms3500M -Xmx3500M"
+  ## Size of the /dev/shm emptyDir mounted into the container. Docker/Kubernetes default
+  ## /dev/shm to 64Mi, which Chromium (driven via Playwright in the UI suites) exhausts fast
+  ## once more than one headless browser instance runs concurrently in the same pod.
+  shmSize: 1Gi
 
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
 ## Clamav container already runs as 'mosip' user, so we may not need to enable this

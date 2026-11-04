@@ -36,6 +36,9 @@ spec:
             {{- if $.Values.containerSecurityContext.enabled }}
             securityContext: {{- omit $.Values.containerSecurityContext "enabled" | toYaml | nindent 12 }}
             {{- end }}
+            {{- if $.Values.resources }}
+            resources: {{- toYaml $.Values.resources | nindent 12 }}
+            {{- end }}
             {{- if $.Values.command }}
             command: {{- include "common.tplvalues.render" (dict "value" $.Values.command "context" $ ) | nindent 12 }}
             {{- end }}
@@ -108,6 +111,8 @@ spec:
                 containerPort: {{ $.Values.springServicePort }}
 
             volumeMounts:
+              - name: dshm
+                mountPath: /dev/shm
               {{- if $.Values.enable_insecure }}
               - mountPath: /usr/local/openjdk-11/lib/security/cacerts
                 name: cacerts
@@ -121,6 +126,10 @@ spec:
               {{- end }}
 
           volumes:
+            - name: dshm
+              emptyDir:
+                medium: Memory
+                sizeLimit: {{ $.Values.additionalResources.shmSize | default "1Gi" }}
             {{- if $.Values.enable_insecure }}
             - name: cacerts
               emptyDir: {}
